@@ -1,0 +1,144 @@
+%%%
+% Plantilla de Memoria
+%%%
+
+%----------------------------------------------------------------------------------------
+%	PAQUETES Y CONFIGURACIÓN DEL DOCUMENTO
+%----------------------------------------------------------------------------------------
+
+%%% Configuración del papel.
+% microtype: Tipografía.
+% mathpazo: Usa la fuente Palatino.
+\documentclass[a4paper,11pt]{article}	
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage{mathpazo}
+
+% Indentación de párrafos para Palatino
+\setlength{\parindent}{0pt}
+  \parskip=8pt
+\linespread{1.02} % Change line spacing here, Palatino benefits from a slight increase by default
+
+
+%%% Castellano.
+% noquoting: Permite uso de comillas no españolas.
+% lcroman: Permite la enumeración con numerales romanos en minúscula.
+% fontenc: Usa la fuente completa para que pueda copiarse correctamente del pdf.
+\usepackage[spanish,es-noquoting,es-lcroman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{fancyvrb}
+\usepackage{graphicx}
+\selectlanguage{spanish}
+\graphicspath{ {./img/} }
+
+%%% Gráficos
+\usepackage{graphicx} % Required for including pictures
+\usepackage{wrapfig} % Allows in-line images
+\usepackage[usenames,dvipsnames]{color} % Coloring code
+\usepackage{float} % Force float position
+
+%%% Matemáticas
+\usepackage{amsmath}
+
+%%% Bibliografía
+\makeatletter
+\renewcommand\@biblabel[1]{\textbf{#1.}} % Change the square brackets for each bibliography item from '[1]' to '1.'
+\renewcommand{\@listI}{\itemsep=0pt} % Reduce the space between items in the itemize and enumerate environments and the bibliography
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Matlab,
+  aboveskip=1mm,
+  belowskip=1mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=2
+}
+
+\renewcommand{\lstlistingname}{Listado}% Listing -> Algorithm
+\renewcommand\spanishtablename{Tabla}
+\renewcommand{\arraystretch}{1.2}
+
+%----------------------------------------------------------------------------------------
+%	TÍTULO
+%----------------------------------------------------------------------------------------
+% Configuraciones para el título.
+% El título no debe editarse aquí.
+\renewcommand{\maketitle}{
+  \begin{center} % Right align
+  
+  {\huge\@title} % Increase the font size of the title
+  \vspace{180pt} % Some vertical space between the title and author name
+  
+  {\Large\@author} % Author name
+  \\\@date % Date
+  \newpage
+  \end{center}
+}
+
+%% Título
+\title{\textbf{Fundamentos Matemáticos y Físicos para Informática Gráfica} % Title
+\bigbreak
+Memoria de Laboratorio del\\Módulo 2: Matemáticas} % Subtitle
+\author{\textbf{Félix de las Pozas Álvarez} % Author
+{- felix.delaspozas@urjc.es}\\
+\textbf{Gael Rial Costas} % Author
+{- gael.rial.costas@urjc.es}\\
+\textbf{Antonio Arian Silaghi} % Author
+{- aa.silaghi.2018@alumnos.urjc.es}\\
+\vspace{2cm}
+\bigbreak
+\textit{Máster Universitario en Informática Gráfica, \\Juegos y Realidad Virtual 2022/2023}
+\bigbreak
+\includegraphics[scale=0.4]{logo_urjc.jpg}
+%\textit{Universidad Rey Juan Carlos} % Institution
+\break}
+\date{\today} % Date
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENTO
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Print the title section
+
+%% Resumen (Descomentar para usarlo)
+%\renewcommand{\abstractname}{Resumen} % Uncomment to change the name of the abstract to something else
+%\begin{abstract}
+% Resumen aquí
+%\end{abstract}
+
+%% Palabras clave
+%\hspace*{3,6mm}\textit{Keywords:} lorem , ipsum , dolor , sit amet , lectus % Keywords
+%\vspace{30pt} % Some vertical space between the abstract and first section
+
+
+%% Índice
+%{\parskip=2pt
+%  \tableofcontents
+%}
+%\pagebreak
+
+%%% Inicio del documento
+
+\input{1-integracion}
+\input{2-sistemas}
+\input{3-raices}
+\input{4-euler}
+
+\end{document}
+

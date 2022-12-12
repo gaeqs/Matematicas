@@ -1,0 +1,93 @@
+\section{Hoja 2: Resolución numérica de sistemas lineales}
+
+Para la resolución de los sistemas lineales dados para los apartados 1 y 2 implementamos los métodos de Jacobi y de Gauss-Seidel como funciones. Ambas reciben como parámetros la matriz A con los coeficientes y la matriz columna B con los valores resultado del sistema de ecuaciones Ax = B, una solución inicial \textbf{``sol''} para la iteración y el valor de tolerancia. Y ambas devuelven un vector solución y el número de iteraciones efecturadas, que nos servirá para medir la eficiencia del método.
+
+\begin{lstlisting}[language=Matlab, caption={Método de Jacobi.},captionpos=b,texcl=true]
+function [res,count] = Jacobi(A, B, sol, tolerancia)
+    next=zeros(1,length(sol));
+    for i = 1:length(A)
+        suma = 0;
+        for j = 1:length(sol)
+            if(i ~= j)
+                suma = suma + A(i,j)*sol(j);
+            end
+        end
+        next(i) = (B(i)-suma)/A(i,i);
+    end
+    count = 1;
+    other = 0;
+    for i = 1:length(sol)
+        if(abs(sol(i)-next(i)) > tolerancia)
+            [next, other] = Jacobi(A,B, next,tolerancia);
+            break
+        end
+    end
+    count = count + other;
+    res = next;
+end
+\end{lstlisting}
+
+\begin{lstlisting}[language=Matlab, caption={Método de Gauss-Seidel.},captionpos=b,texcl=true]
+function [res, count] = GaussSeidel(A, B, sol, tolerancia)
+    next = sol;
+    for i = 1:length(A)
+        suma = 0;
+        for j = 1:length(next)
+            if(i ~= j)
+                if(i > j)
+                    suma = suma + A(i,j)*next(j);
+                else
+                   suma = suma + A(i,j)*sol(j);
+                end
+            end
+        end
+        next(i) = (B(i)-suma)/A(i,i);
+    end
+    count = 1;
+    other = 0;
+    for i = 1:length(next)
+        if(abs(sol(i)-next(i)) > tolerancia)
+            [next, other] = GaussSeidel(A,B,next, tolerancia);
+            break
+        end
+    end
+    count = count + other;
+    res = next;
+end
+\end{lstlisting}
+
+\subsection{Apartado 1}
+
+Para el sistema de ecuaciones dado (que no incluiremos aquí por brevedad) la solución obtenida con ambos métodos es \[x_1=3 , x_2=-2.5 , x_3=7\] pero con Gauss-Seidel obtenemos la solución en 3 iteraciones mientras que con el método de Jacobi usamos 4 con la misma toleracia de 0.01.
+
+\subsection{Apartado 2}
+
+Para el segundo sistema de cuatro ecuaciones con cuatro incógnitas podemos observar que Gauss-Seidel se aproxima a la solución de manera mucho más rápida y obtiene mejores resultados al reutilizar los valores de las variables ya computadas durante la iteración.
+
+La solución dada en el enunciado es: \[x_1=2.7273 , x_2 = 0.4040 , x_3 = 0.6364 , x_4 = 0.1919\] es la usada para computar el error.
+\begin{table}
+\begin{center}
+\begin{tabular}{ |c|c|c|c| } 
+ \hline 
+ Metodo & Tolerancia & Iteraciones (k) & max(Error\textsuperscript{k}) \\ 
+ \hline \hline
+ Jacobi &  0.1 & 5 & > 100 \\
+ \hline
+ Jacobi &  0.01 & 12 & 17.46\\
+ \hline
+ Jacobi &  0.001 & 21 & 1.19\\
+ \hline
+ Jacobi &  0.0001 & 29 & 0.1155\\
+ \hline
+ Gauss-Seidel & 0.1 & 4 & 31.9828\\
+ \hline
+ Gauss-Seidel & 0.01 & 8 & 3.0241\\
+ \hline
+ Gauss-Seidel & 0.001 & 12 & 0.3491\\
+ \hline
+ Gauss-Seidel & 0.0001 & 16 &  0.0335\\
+ \hline
+\end{tabular}
+\end{center}
+\caption{Interaciones y error según la tolerancia para Jacobi y Gauss-Seidel.}
+\end{table}
