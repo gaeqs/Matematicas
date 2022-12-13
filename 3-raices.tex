@@ -1,6 +1,8 @@
 \section{Hoja 3: Raíces numéricas de funciones no lineales}
 
-A continuación se va a explicar la resolución de la práctica 4. Para esta práctica se han programado en Matlab dos métodos para encontrar las raíces numéricas de funciones no lineales. El método de bisección y el método de Newton-Raphson.
+A continuación se va a explicar la resolución de la práctica 3.
+Para esta práctica se han programado en \textit{Matlab} dos métodos para encontrar las raíces numéricas de funciones no lineales.
+El método de bisección y el método de Newton-Raphson.
 
 \subsection{Método de bisección}
 Partiendo de una función \(f(x)\) que este definida y sea continua en el intervalo \([x_1, x_2]\) tal que el signo de \(f(x_1)\) es distinto al de \(f(x_2)\) ó \(f(x_1)f(x_2) < 0\). Según el teorema de Bolzano-Weierstrass, dentro del intervalo \((x_1, x_2)\) tiene que existir al menos un valor de \(x\) tal que \(f(x) = 0\).
@@ -9,7 +11,7 @@ El método de bisección es un método iterativo en el que en cada iteración se
 
 \begin{enumerate}
     \item Se calcula el punto medio \(m\) del intervalo como \(m = (x_1 + x_2)/2\).
-    \item Si \(f(m) = 0\) entonces m es una raíz y se termina el algoritmo. Si no, se calcula el signo de \(f(m)\)
+    \item Si \(f(m) = 0\) entonces \(m\) es una raíz y se termina el algoritmo. Si no, se calcula el signo de \(f(m)\)
     \item En el intervalo actual \([x_1, x_2]\) se reemplaza o \(x_1\) o \(x_2\) con \(m\) tal que se siga cumpliendo que \(f(x_1)f(x_2) < 0\) para el nuevo intervalo.
     \item Se continua hasta el número de iteraciones determinado o hasta que el error sea menor que la cota predefinida.
 \end{enumerate}
