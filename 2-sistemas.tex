@@ -62,9 +62,10 @@ Para el sistema de ecuaciones dado (que no incluiremos aquí por brevedad) la so
 
 \subsection{Apartado 2}
 
-Para el segundo sistema de cuatro ecuaciones con cuatro incógnitas podemos observar que Gauss-Seidel se aproxima a la solución de manera mucho más rápida y obtiene mejores resultados al reutilizar los valores de las variables ya computadas durante la iteración.
+Para el segundo sistema de cuatro ecuaciones con cuatro incógnitas podemos observar que Gauss-Seidel se aproxima a la solución de manera mucho más rápida y obtiene mejores resultados al reutilizar los valores de las variables ya computadas durante la iteración (ver \autoref{tbl:error2}).
 
-La solución dada en el enunciado es: \[x_1=2.7273 , x_2 = 0.4040 , x_3 = 0.6364 , x_4 = 0.1919\] es la usada para computar el error.
+La solución dada en el enunciado es: \[x_1=2.7273 , x_2 = 0.4040 , x_3 = 0.6364 , x_4 = 0.1919\] es la usada para computar el error. Aunque la expresión del error dada en clase usa el valor de la iteración anterior, usando el valor exacto tenemos el error porcentual con respecto a la solución por lo que puede ser mayor que 100 dependiendo del resultado.
+
 \begin{table}
 \begin{center}
 \begin{tabular}{ |c|c|c|c| } 
@@ -90,4 +91,5 @@ La solución dada en el enunciado es: \[x_1=2.7273 , x_2 = 0.4040 , x_3 = 0.6364
 \end{tabular}
 \end{center}
 \caption{Interaciones y error \% según la tolerancia para Jacobi y Gauss-Seidel.}
+\label{tbl:error2}
 \end{table}

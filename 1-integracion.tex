@@ -43,7 +43,7 @@ fA=@(x) exp(x);
 exactoA = integral(fA,0,1); % valor exacto e^x en [0,1]
 \end{lstlisting}
 
-Podemos apreciar que el incremento en el número de intervalos aproxima el resultado a la solución exacta usando el mismo método y que, comparando la solución de cada método con el mismo número de intervalos (1000 en nuestro caso) con el valor exacto, vemos que el error cometido es mucho menor con la fórmula de Simpson que aproxima cuadráticamente. Una gráfica de la disminución del error puede verse en la figura ~\ref{fig:errorIntA}.
+Podemos apreciar que el incremento en el número de intervalos aproxima el resultado a la solución exacta usando el mismo método y que, comparando la solución de cada método con el mismo número de intervalos (1000 en nuestro caso) con el valor exacto, vemos que el error cometido es mucho menor con la fórmula de Simpson que aproxima cuadráticamente (ver \autoref{tbl:errorIntA}). Una gráfica de la disminución del error puede verse en la \autoref{errorIntFig}.
 \begin{table}
 \begin{center}
 \begin{tabular}{ |c|c| } 
@@ -63,13 +63,14 @@ Podemos apreciar que el incremento en el número de intervalos aproxima el resul
 \end{tabular}
 \end{center}
 \caption{Error absoluto cometido para el apartado A con 1000 intervalos.}
+\label{tbl:errorIntA}
 \end{table}
 
 \begin{figure}[!h]
   \centering
   \includegraphics[width=\linewidth]{Integracion/error_int.png}
-  \label{fig:errorIntA}
   \caption{Disminución del error al aumentar el número de intervalos (no se incluyen métodos con un error mayor).}
+  \label{errorIntFig}
 \end{figure}
 
 \subsection{Apartado B}
@@ -82,7 +83,7 @@ aproxiB = trapz(X,Y);
 exactoB = integral(fB, 0, 2*pi);
 \end{lstlisting}
 
-Usando esta vez 2000 intervalos obtenemos unas conclusiones similares al apartado A.
+Usando esta vez 2000 intervalos obtenemos unas conclusiones similares al apartado A (ver \autoref{tbl:errorIntB}).
 \begin{table}
 \begin{center}
 \begin{tabular}{ |c|c| } 
@@ -102,6 +103,7 @@ Usando esta vez 2000 intervalos obtenemos unas conclusiones similares al apartad
 \end{tabular}
 \end{center}
 \caption{Error absoluto cometido para el apartado B con 2000 intervalos.}
+\label{tbl:errorIntB}
 \end{table}
 
 No se incluye la gráfica del error en el caso del apartado B por ser muy similar a la ya mostrada en el apartado A con el mismo incremento en el número de intervalos.
